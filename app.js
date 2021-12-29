@@ -6,19 +6,9 @@ const { engine } = require('express-handlebars')
 app.use(express.static('public'))
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
-const mongoose = require('mongoose')
-mongoose.connect(`mongodb://localhost/restaurant-list`, { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
-
+require('./config/mongoose')
 const { required } = require('nodemon/lib/config')
 const { links, append } = require('express/lib/response')
-
-// handle connections
-db.once('open', () => {
-  console.log('MongoDB running');
-}).on('error', () => {
-  console.log('err');
-});
 
 // setting template engine
 app.set('view engine', 'handlebars')
