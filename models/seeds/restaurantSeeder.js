@@ -1,4 +1,5 @@
 const db = require('../../config/mongoose')
+const restaurants = require('../../models/restaurant')
 const restaurantData = require('../../restaurant.json')
 db.once('open', () => {
   console.log('mongodb connected!')

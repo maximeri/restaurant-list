@@ -1,7 +1,7 @@
 <!-- search bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
+  
       <form action="/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
@@ -12,12 +12,20 @@
           </div>
         </div>
       </form>
-    </div>
-  </div>
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          排序
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="#">A→Z</a>
+          <a class="dropdown-item" href="#">Z→A</a>
+          <a class="dropdown-item" href="#">類別</a>
+          <a class="dropdown-item" href="#">地區</a>
+        </div>
+      </div>
 </div>
-<div class="text-center mt-3">
-<a href="./new">Create</a>
-</div>
+</nav>
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
@@ -38,10 +46,10 @@
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
-              <a href="/restaurants/{{this._id}}/edit">Edit</a>
-              <a href="/restaurants/{{this._id}}">Details</a>
-              <form action="/restaurants/{{this._id}}/delete" method="POST" style="display:inline">
-              <button type="submit"class="btn btn-danger">Delete</button>
+              <a href="/restaurants/{{this._id}}/edit" class="btn btn-light">編輯</a>
+              <a href="/restaurants/{{this._id}}" class="btn btn-primary">查看</a>
+              <form action="./restaurants/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
+              <button type="submit"class="btn btn-danger">刪除</button>
               </form>
             </div>
           </div>

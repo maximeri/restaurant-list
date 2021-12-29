@@ -1,4 +1,4 @@
-<form action="/" method="POST">
+<form action="/restaurants" method="POST">
   <div class="container text-center mt-3">
     <button type="submit" class="btn btn-info">Create</button>
     <a href="/">Back</a>
@@ -16,7 +16,7 @@
 
         <p class="mb-1">
           <span class="text-secondary">
-            <i class="fas fa-utensils pr-2"></i>
+            <i class="fas fa-pencil-alt pr-2"></i>
             類別：<input type="text" placeholder="category" name="category" value="{{ this.category }}">
           </span>
         </p>
@@ -40,21 +40,21 @@
 
         <p class="mb-1">
           <span class="text-secondary">
-            <i class="fas fa-mobile-alt pr-2"></i>
+            <i class="fas fa-book pr-2"></i>
             簡介：<input type="text" placeholder="description" name="description" value="{{ this.description }}">
           </span>
         </p>
 
         <p class="mb-1">
           <span class="text-secondary">
-            <i class="fas fa-mobile-alt pr-2"></i>
+            <i class="fas fa-star pr-2"></i>
             評分：<input type="number" step="0.1" placeholder="rating" name="rating" value="{{ this.rating }}">
           </span>
         </p>
 
         <p class="mb-1">
           <span class="text-secondary">
-            <i class="fas fa-mobile-alt pr-2"></i>
+            <i class="fas fa-images pr-2"></i>
             照片：<input type="url" placeholder="image url" name="image" value="{{ this.image }}">
           </span>
         </p>
