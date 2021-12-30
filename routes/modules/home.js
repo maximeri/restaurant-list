@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
     .then(restaurants => res.render('index', { restaurants: restaurants }))
 })
 
+//sort
 router.get('/sort-name-asc',(req,res)=>{
   restaurants.find()
   .lean()
