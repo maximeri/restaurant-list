@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const restaurants = require('../../models/restaurant')
+const Restaurant = require('../../models/restaurant')
 
 // create restaurant
 router.get('/new', (req, res) => {
@@ -10,7 +10,7 @@ router.get('/new', (req, res) => {
 // render details(show)
 router.get('/:restaurantId', (req, res) => {
   const id = req.params.restaurantId
-  restaurants.findById(id)
+  Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('show', { restaurant: restaurant }))
 })
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
   const google_map = req.body.google_map
   const rating = req.body.rating
   const description = req.body.description
-  return restaurants.create({ name, category, image, location, phone, rating, description })
+  return Restaurant.create({ name, category, image, location, phone, rating, description })
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
 // edit read
 router.get('/:restaurantId/edit', (req, res) => {
   const id = req.params.restaurantId
-  restaurants.findById(id)
+  Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('edit', { restaurant: restaurant }))
 })
@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
   const rating = req.body.rating
   const description = req.body.description
 
-  return restaurants.findById(id)
+  return Restaurant.findById(id)
     .then((restaurant) => {
       restaurant.name = name
       restaurant.name_en = name_en
@@ -72,7 +72,7 @@ router.put('/:id', (req, res) => {
 // delete restaurant
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  return restaurants.findById(id)
+  return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
     .then(restaurant => res.redirect('/'))
 })
@@ -80,7 +80,7 @@ router.delete('/:id', (req, res) => {
 //search by name or category
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
-  return restaurants.find().or([{ "name": { $regex: keyword, $options: 'i' } }, { "category": { $regex: keyword, $options: 'i' } }]).lean()
+  return Restaurant.find().or([{ "name": { $regex: keyword, $options: 'i' } }, { "category": { $regex: keyword, $options: 'i' } }]).lean()
     .then(searchResult => res.render('index', { restaurants: searchResult, keyword: keyword }))
 })
 
