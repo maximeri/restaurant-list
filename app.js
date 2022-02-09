@@ -6,6 +6,7 @@ const PORT = 3000
 const { engine } = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const usePassport = require('./config/passport') // function
 const app = express()
 
 
@@ -25,6 +26,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: { secure: true }
 }))
+usePassport(app)
 
 app.use(routes)
 app.listen(PORT)
