@@ -1,41 +1,49 @@
 const express = require('express')
 const router = express.Router()
-const restaurants = require('../../models/restaurant')
+
+const Restaurant = require('../../models/restaurant')
 
 // home page
 router.get('/', (req, res) => {
-  restaurants.find()
+  const userId = req.user._id
+  Restaurant.find({ userId })
     .lean()
-    .then(restaurants => res.render('index', { restaurants: restaurants }))
+    .sort({ _id: 'asc' })
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.error(error))
 })
 
 //sort
-router.get('/sort-name-asc',(req,res)=>{
-  restaurants.find()
-  .lean()
-  .sort({ name: 'asc' })
-  .then(restaurants => res.render('index', { restaurants: restaurants }))
+router.get('/sort-name-asc', (req, res) => {
+  const userId = req.user._id
+  Restaurant.find({ userId })
+    .lean()
+    .sort({ name: 'asc' })
+    .then(restaurants => res.render('index', { restaurants: restaurants }))
 })
 
 router.get('/sort-name-desc', (req, res) => {
-    restaurants.find()
-      .lean()
-      .sort({ name: 'desc' })
-      .then(restaurants => res.render('index', { restaurants: restaurants }))
+  const userId = req.user._id
+  Restaurant.find({ userId })
+    .lean()
+    .sort({ name: 'desc' })
+    .then(restaurants => res.render('index', { restaurants: restaurants }))
 })
 
 router.get('/sort-category', (req, res) => {
-    restaurants.find()
-      .lean()
-      .sort({ category: 'asc' })
-      .then(restaurants => res.render('index', { restaurants: restaurants }))
+  const userId = req.user._id
+  Restaurant.find({ userId })
+    .lean()
+    .sort({ category: 'asc' })
+    .then(restaurants => res.render('index', { restaurants: restaurants }))
 })
 
 router.get('/sort-location', (req, res) => {
-    restaurants.find()
-      .lean()
-      .sort({ location: 'asc' })
-      .then(restaurants => res.render('index', { restaurants: restaurants }))
+  const userId = req.user._id
+  Restaurant.find({ userId })
+    .lean()
+    .sort({ location: 'asc' })
+    .then(restaurants => res.render('index', { restaurants: restaurants }))
 })
 
 module.exports = router

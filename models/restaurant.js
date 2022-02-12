@@ -3,39 +3,37 @@ const Schema = mongoose.Schema
 const restaurantSchema = new Schema({
   name: {
     type: String,
-    reauired: true
-  },
-  name_en: {
-    type: String,
-    reauired: true
+    required: true
   },
   category: {
     type: String,
-    reauired: true
+    required: true
   },
   image: {
     type: String,
-    reauired: true
+    required: true
   },
   location: {
     type: String,
-    reauired: true
+    required: true
   },
   phone: {
     type: String,
-    reauired: true
-  },
-  google_map: {
-    type: String,
-    reauired: true
+    required: true
   },
   rating: {
     type: Number,
-    reauired: true
+    required: true
   },
   description: {
     type: String,
-    reauired: true
+    required: true
+  },
+  userId: {  // 加入關聯設定
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    required: true
   }
 })
 

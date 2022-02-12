@@ -3,15 +3,15 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   name: {
     type: String,
-    reauired: false
+    required: false
   },
   email: {
     type: String,
-    reauired: true
+    required: true
   },
   password: {
     type: String,
-    reauired: true
+    required: true
   },
   createdAt: {
     type: Date,
