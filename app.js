@@ -16,7 +16,7 @@ const config = {
 }; 
 app.engine('handlebars', engine(config))
 app.use(session({
-  secret: 'thisIsMySecret',
+  secret: 'ThisIsMyDevSecret',
   resave: false,
   saveUninitialized: true,
 }))
