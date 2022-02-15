@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-//sort
+// sort
 router.get('/sort-name-asc', (req, res) => {
   const userId = req.user._id
   Restaurant.find({ userId })

@@ -1,0 +1,9 @@
+{
+  "results":[
+    {
+      "name": "user1",
+      "email": "user1@example.com",
+      "password":"",
+    }
+  ]
+}

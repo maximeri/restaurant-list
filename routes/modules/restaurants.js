@@ -10,7 +10,7 @@ router.get('/new', (req, res) => {
 // view restaurant
 router.get('/:id', (req, res) => {
   const userId = req.user._id
-  //改用 findOne 之後，Mongoose 就不會自動幫我們轉換 id 和 _id，所以這裡要寫和資料庫一樣的屬性名稱，也就是 _id。
+  // 改用 findOne 之後，Mongoose 就不會自動幫我們轉換 id 和 _id，所以這裡要寫和資料庫一樣的屬性名稱，也就是 _id。
   const _id = req.params.id
   return Restaurant.findOne({ _id, userId })
     .lean()
@@ -25,7 +25,7 @@ router.get('/:id/edit', (req, res) => {
   Restaurant.findOne({ _id, userId })
     .lean()
     .then(restaurant => res.render('edit', { restaurant: restaurant })
-    .catch(error => console.log(error)))
+      .catch(error => console.log(error)))
 })
 
 router.post('/', (req, res) => {
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
   const phone = req.body.phone
   const rating = req.body.rating
   const description = req.body.description
-  return Restaurant.create({ name, category, image, location, phone, rating, description, userId})
+  return Restaurant.create({ name, category, image, location, phone, rating, description, userId })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -83,11 +83,11 @@ router.delete('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//search by name or category
+// search by name or category
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
   const userId = req.user._id
-  return Restaurant.findOne({userId}).find().or([{ "name": { $regex: keyword, $options: 'i' } }, { "category": { $regex: keyword, $options: 'i' } }]).lean()
+  return Restaurant.findOne({ userId }).find().or([{ name: { $regex: keyword, $options: 'i' } }, { category: { $regex: keyword, $options: 'i' } }]).lean()
     .then(searchResult => res.render('index', { restaurants: searchResult, keyword: keyword }))
 })
 
