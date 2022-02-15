@@ -27,10 +27,10 @@ module.exports = app => {
   }))
   // 設定facebook登入策略 (Strategy)
   passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_SECRET,
+    clientID: process.env.FACEBOOK_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK,
-    profileFields: ['email', 'displayName'] // 這個設定是和 Facebook 要求開放的資料，我們要了兩種資料：email：這是必要的，需要拿回來當成帳號displayName：Facebook 上的公開名稱，也許能和 User 的 name 屬性對應起來
+    profileFields: ['email', 'displayName']
   }, (accessToken, refreshToken, profile, done) => {
     const { email, name } = profile._json
     console.log(profile)
