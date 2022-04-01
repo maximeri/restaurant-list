@@ -1,6 +1,7 @@
 # Restaurant List
 Save your favorite restaurants with restaurant list. 
 The app is built with Node.js & Express & MongoDB.
+![alt text](https://github.com/maximeri/restaurant-list/blob/ea6fcd1c796d82f4bfafd99a456083b6e8bc14b7/screencapture-localhost-3000-users-register-2022-04-01-17_34_44.png)
 
 ## Features
 - Add favorite restaurants to the list and edit anytime
